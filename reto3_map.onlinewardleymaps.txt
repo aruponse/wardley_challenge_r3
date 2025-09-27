@@ -1,0 +1,100 @@
+title Sistema de Préstamos BanPremium - Análisis Wardley v2.0
+
+// ANCHOR - Necesidad del Usuario Principal
+anchor Cliente Solicitante [0.95, 0.10]
+
+// COMPONENTES NIVEL 1: USER INTERFACE (Muy Visible 0.9-1.0)
+component Canal Digital [0.95, 0.15] 
+evolve Canal Digital->Portal Web Moderno 0.68
+component Sistema Notificaciones [0.93, 0.82]
+component Portal Seguimiento [0.91, 0.85]
+
+// COMPONENTES NIVEL 2: BUSINESS LOGIC (Visible 0.7-0.8)  
+component Motor Originación [0.78, 0.30]
+evolve Motor Originación->Workflow Digital 0.45
+component Motor Aprobaciones [0.75, 0.28]  
+evolve Motor Aprobaciones->Sistema Inteligente 0.42
+component Gestión Documental [0.72, 0.40]
+
+// COMPONENTES NIVEL 3: DATA SERVICES (Moderadamente Visible 0.5-0.6)
+component Sistema Scoring [0.58, 0.15]
+evolve Sistema Scoring->Scoring AI ML 0.20
+component Motor Analytics [0.55, 0.60]
+component Integración Externa [0.52, 0.52]
+
+// COMPONENTES NIVEL 4: PLATFORM SERVICES (Poco Visible 0.3-0.4)
+component Datos Cliente [0.38, 0.38]
+evolve Datos Cliente->MDM Cloud 0.80  
+component Base Datos Prestamos [0.35, 0.55]
+component API Gateway [0.32, 0.65]
+
+// COMPONENTES NIVEL 5: INFRASTRUCTURE (Invisible 0.1-0.2)
+component Core Banking [0.18, 0.35]
+evolve Core Banking->Core SaaS 0.70
+component Sistema Seguridad [0.15, 0.62] 
+component Plataforma Cloud [0.12, 0.90]
+component Servicios Conectividad [0.08, 0.85]
+component Servicios Monitoreo [0.05, 0.88]
+
+// DEPENDENCIAS PRINCIPALES (Cadena de Valor)
+Cliente Solicitante->Canal Digital
+Cliente Solicitante->Portal Seguimiento  
+Canal Digital->Motor Originación
+Canal Digital->Sistema Notificaciones
+Motor Originación->Motor Aprobaciones
+Motor Originación->Gestión Documental
+Motor Aprobaciones->Sistema Scoring
+Motor Aprobaciones->Motor Analytics
+Sistema Scoring->Datos Cliente
+Sistema Scoring->Integración Externa
+Motor Analytics->Base Datos Prestamos
+Gestión Documental->API Gateway
+API Gateway->Core Banking
+Core Banking->Sistema Seguridad
+Core Banking->Plataforma Cloud
+Plataforma Cloud->Servicios Conectividad
+Plataforma Cloud->Servicios Monitoreo
+
+// COMPONENTES OBJETIVO (Target State)
+component Portal Web Moderno [0.95, 0.68] 
+component Workflow Digital [0.78, 0.45]
+component Sistema Inteligente [0.75, 0.42]
+component Scoring AI ML [0.58, 0.20]  
+component MDM Cloud [0.38, 0.80]
+component Core SaaS [0.18, 0.70]
+
+// DEPENDENCIAS OBJETIVO
+Portal Web Moderno->Workflow Digital
+Workflow Digital->Sistema Inteligente  
+Sistema Inteligente->Scoring AI ML
+Scoring AI ML->MDM Cloud
+MDM Cloud->Core SaaS
+Core SaaS->Plataforma Cloud
+
+// ANOTACIONES Y NOTAS ESTRATÉGICAS
+annotation 1 [[0.15,0.15],[0.20,0.20]] Scoring IA: Ventaja competitiva clave - mantener en Genesis/Custom para diferenciación
+annotation 2 [[0.35,0.35],[0.70,0.70]] Core Banking: Migración crítica COBOL->SaaS, mayor riesgo técnico
+annotation 3 [[0.90,0.90],[0.95,0.15]] Canal Digital: Máxima prioridad, impacto directo en experiencia usuario
+annotation 4 [[0.12,0.90],[0.88,0.88]] Infraestructura Cloud: Commoditizar para enfocar recursos en diferenciación
+
+note Tiempo actual procesamiento: 48-72h [0.30, 0.92]
+note Objetivo: <30min procesamiento [0.45, 0.92]  
+note ROI esperado: 300% en 24 meses [0.60, 0.92]
+note STP actual: 5% -> objetivo: 85% [0.75, 0.92]
+
+// FUERZAS Y MOVIMIENTOS
+note FUERZA: Competencia Fintech [0.85, 0.05]
+note FUERZA: Demanda Experiencia Digital [0.70, 0.05] 
+note FUERZA: Regulación Open Banking [0.55, 0.05]
+note INERCIA: Conocimiento COBOL [0.40, 0.05]
+note INERCIA: Procesos Establecidos [0.25, 0.05]
+
+// FASES DE TRANSFORMACIÓN
+note FASE 0: APIs + Cloud Básico [0.05, 0.30]
+note FASE 1: Experiencia Digital [0.05, 0.45]  
+note FASE 2: IA + Automatización [0.05, 0.60]
+note FASE 3: Core Modernization [0.05, 0.75]
+
+annotations [0.88, 0.02]
+
+style wardley
